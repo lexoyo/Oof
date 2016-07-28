@@ -1,0 +1,50 @@
+{
+  "type": "Card",
+  "comment": "http://www.material-ui.com/#/components/card",
+  "props": {
+    "expanded": true
+  },
+  "children": [{
+    "type": "CardHeader",
+    "props": {
+      "key": 0,
+      "title": "URL Avatar",
+      "subtitle": "Subtitle",
+      "avatar": "http://lorempixel.com/100/100/nature/",
+      "actAsExpander": true,
+      "showExpandableButton": true
+    }
+  }, {
+    "type": "CardText",
+    "props": {
+      "key": 1,
+      "expandable": true
+    },
+    "children": [{
+      "props": {
+        "key": 2
+      },
+      "type": "CardText",
+      "children": ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio."]
+    }, {
+      "type": "CardActions",
+      "props": {
+        "key": 3,
+        "expandable": true
+      },
+      "children": [{
+        "type": "FlatButton",
+        "props": {
+          "key": 4,
+          "label": "Action1"
+        }
+      }, {
+        "type": "FlatButton",
+        "props": {
+          "key": 5,
+          "label": "Action2"
+        }
+      }]
+    }]
+  }]
+}
