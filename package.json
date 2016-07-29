@@ -18,7 +18,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "browserify src/JsonToReact.js -o pub/json-to-react.js -t [ babelify ]",
+    "build": "npm run build:reader && npm run build:editor",
+    "build:reader": "browserify src/JsonToReact.js -o pub/json-to-react.js -t [ babelify ]",
+    "build:editor": "browserify src/JsonToReactEditor.js -o pub/json-to-react-editor.js -t [ babelify ]",
     "start": "http-server ."
   },
   "author": "",

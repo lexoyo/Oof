@@ -6,15 +6,18 @@
 </head>
 <body>
   <div id="comp1"></div>
-  <textarea id="json" style="width:100%; height:200px"></textarea>
+  <textarea id="json" style="width:100%; height:20px"></textarea>
   <button id="create">create</button>
   <button id="remove">remove</button>
+  <div id="ui"></div>
   <script type="text/javascript" src="./json-to-react.js"></script>
+  <script type="text/javascript" src="./json-to-react-editor.js"></script>
   <script type="text/javascript">
     var jsonInput = document.getElementById('json');
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function() {
       txt = jsonInput.value = oReq.responseText;
+      editor.setData(JSON.parse(oReq.responseText))
       create();
     });
     oReq.open("GET", "./data.json");
@@ -34,13 +37,24 @@
     document.getElementById('create').onclick = create;
 
     function create() {
-      jsonToReact.setData(JSON.parse(jsonInput.value), function() {
+        jsonToReact.setData(JSON.parse(jsonInput.value), function() {
         console.log('JSON interpreted');
       });
     };
     document.getElementById('remove').onclick = function remove() {
       jsonToReact.cleanup();
     };
+
+    var ui = document.getElementById('ui');
+    var editor = JsonToReactEditor.createEditor(ui);
+    editor.onChange = function() {
+      console.log('editor onChange');
+      console.log('before', jsonToReact.getData());
+      jsonInput.value = JSON.stringify(editor.getData());
+      jsonToReact.setData(editor.getData());
+      console.log('after', editor.getData(), jsonToReact.getData());
+    }
+
   </script>
 </body>
 </html>
